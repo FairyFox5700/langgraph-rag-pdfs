@@ -21,8 +21,7 @@ def chat() -> None:
         result = app.invoke({"question": question})
         print(f"\nAssistant: {result['answer']}\n")
         sources = {
-            f"{doc.metadata.get('source', 'unknown')} (p.{doc.metadata.get('page', '?')})"
-            for doc in result.get("documents", [])
+            doc.metadata.get("source", "unknown") for doc in result.get("documents", [])
         }
         if sources:
             print(f"Sources: {', '.join(sorted(sources))}\n")

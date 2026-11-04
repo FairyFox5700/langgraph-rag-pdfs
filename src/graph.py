@@ -31,8 +31,7 @@ def build_graph(k: int = 4):
 
     def generate(state: RAGState) -> RAGState:
         context = "\n\n".join(
-            f"[Source: {doc.metadata.get('source', 'unknown')}, "
-            f"page {doc.metadata.get('page', '?')}]\n{doc.page_content}"
+            f"[Source: {doc.metadata.get('source', 'unknown')}]\n{doc.page_content}"
             for doc in state["documents"]
         )
         messages = [
